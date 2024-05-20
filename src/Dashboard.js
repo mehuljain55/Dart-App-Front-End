@@ -4,6 +4,7 @@ import 'quill/dist/quill.snow.css';
 import { Button, AppBar, Toolbar, Typography, Grid } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
+
 const Dashboard = () => {
     const [candidateId, setCandidateId] = useState('');
     const [questions, setQuestions] = useState([]);
@@ -238,7 +239,7 @@ const Dashboard = () => {
                         {currentQuestionIndex === questions.length - 1 && (
                             <Grid item xs={12}>x
                                 <Button type="submit" variant="contained" color="primary" className="mt-3">
-                                    Submit
+                                    submit
                                 </Button>
                             </Grid>
                         )}
