@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import FormattedText from './FormattedText'; // Assuming you have a FormattedText component
 import { Grid, TextField, Button, Typography, Paper, Container, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -7,13 +7,9 @@ const ResultPage = () => {
     const [candidateId, setCandidateId] = useState('');
     const [candidateDetails, setCandidateDetails] = useState(null);
     const [answers, setAnswers] = useState([]);
-    const [questions, setQuestions] = useState({});
+  
 
-    useEffect(() => {
-        if (answers.length > 0) {
-            fetchQuestions(answers.map(answer => answer.questionId));
-        }
-    }, [answers]);
+
 
     const fetchCandidateAnswers = async (id) => {
         try {
@@ -31,19 +27,7 @@ const ResultPage = () => {
         }
     };
 
-    const fetchQuestions = async (questionIds) => {
-        try {
-            const questionDetails = {};
-            for (const questionId of questionIds) {
-                const response = await fetch(`http://localhost:8080/getQuestionId?questionId=${questionId}`);
-                const data = await response.json();
-                questionDetails[questionId] = data.questionText;
-            }
-            setQuestions(questionDetails);
-        } catch (error) {
-            console.error('Error fetching question details:', error);
-        }
-    };
+    
 
     const handleCheck = () => {
         if (candidateId.trim()) {
@@ -101,7 +85,7 @@ const ResultPage = () => {
                             <AccordionDetails>
                                 <div style={{ width: '100%' }}>
                                     <Typography variant="body1">
-                                        <strong>Question:</strong> {questions[answer.questionId]}
+                                        <strong>Question: {answer.question_info} </strong>
                                     </Typography>
                                     <FormattedText content={answer.answerTranscript} />
                                     {answer.videoPath && (
