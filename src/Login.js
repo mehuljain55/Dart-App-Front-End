@@ -41,6 +41,10 @@ const Login = () => {
         .catch(error => console.error('Error during login:', error));
     };
 
+    const handleResultButtonClick = () => {
+        navigate('/result');
+    };
+
     return (
         <div style={{ background: 'linear-gradient(to right, rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0.8))', minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <Paper elevation={10} style={{ padding: 20, width: 300, backdropFilter: 'blur(5px)', backgroundColor: 'rgba(255, 255, 255, 0.4)' }}>
@@ -68,6 +72,14 @@ const Login = () => {
                             placeholder="Enter Password"
                         />
                         <Button type="submit" variant="contained" color="primary" style={{ marginTop: 20 }}>Login</Button>
+                        <Button
+                            variant="outlined"
+                            color="secondary"
+                            style={{ marginTop: 20, marginRight: 10 }}
+                            onClick={handleResultButtonClick}
+                        >
+                            Result
+                        </Button>
                         <Button
                             variant="outlined"
                             color="secondary"
